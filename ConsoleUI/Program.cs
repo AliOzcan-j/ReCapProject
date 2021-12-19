@@ -10,31 +10,41 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            //CarTest();
+            //BrandTest();
+            //ColorTest();
+        }
+
+        private static void ColorTest()
+        {
+            Console.WriteLine("\n");
             ColorManager colorManager = new ColorManager(new EfColorDal());
-
-            Console.WriteLine("\n");
-
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.Id + " " + car.BrandId + " " +
-                    car.ColorId + " " + car.ModelYear + " " + car.DailyPrice +
-                    " " + car.Description);
-            }
-
-            Console.WriteLine("\n");
-
-            foreach (var brand in brandManager.GetAll())
-            {
-                Console.WriteLine(brand.Id+" "+brand.Name);
-            }
-
-            Console.WriteLine("\n");
-
             foreach (var color in colorManager.GetAll())
             {
-                Console.WriteLine(color.Id+" "+color.Name);
+                Console.WriteLine(color.ColorId + " " + color.ColorName);
+            }
+        }
+
+        private static void BrandTest()
+        {
+            Console.WriteLine("\n");
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.BrandId + " " + brand.BrandName);
+            }
+        }
+
+        private static void CarTest()
+        {
+            Console.WriteLine("\n");
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarId + " " + car.BrandName + " " + car.Description+" "+
+                                  car.ColorName + " " + car.ModelYear + " " + car.DailyPrice);
+
+                
             }
         }
     }
