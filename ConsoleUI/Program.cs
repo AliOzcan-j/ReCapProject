@@ -13,19 +13,32 @@ namespace ConsoleUI
             //CarTest();
             //BrandTest();
             //ColorTest();
-            CarManager cm = new CarManager(new EfCarDal());
+            /*CarManager cm = new CarManager(new EfCarDal());
             var result = cm.GetCarsByBrandId(15);
+            Console.WriteLine(result.Message);*/
+            //UserTest();
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental { Id=3,CarId=2,CustomerId=3,RentDate=new DateTime(2020,02,22)});
             Console.WriteLine(result.Message);
-        
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            userManager.Add(new User { Id = 1, FirstName = "Ali", LastName = "Özcan", Email = "placeholder@gmail.com", Password = "Tqs15.OIeqk26KS" });
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.Id + " " + user.FirstName + " " + user.LastName + " " + user.Email + " " + user.Password);
+            }
         }
 
         private static void ColorTest()
         {
             Console.WriteLine("\n");
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
-                Console.WriteLine(color.ColorId + " " + color.ColorName);
+                Console.WriteLine(color.Id + " " + color.Name);
             }
         }
 
@@ -33,9 +46,9 @@ namespace ConsoleUI
         {
             Console.WriteLine("\n");
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
-                Console.WriteLine(brand.BrandId + " " + brand.BrandName);
+                Console.WriteLine(brand.Id + " " + brand.Name);
             }
         }
 
@@ -45,7 +58,7 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             foreach (var car in carManager.GetCarDetails().Data)
             {
-                Console.WriteLine(car.CarId + " " + car.BrandName + " " + car.Description+" "+
+                Console.WriteLine(car.Id + " " + car.BrandName + " " + car.Description+" "+
                                   car.ColorName + " " + car.ModelYear + " " + car.DailyPrice);
 
                 
