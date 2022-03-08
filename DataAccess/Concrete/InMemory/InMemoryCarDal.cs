@@ -9,18 +9,18 @@ using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryCarDal : ICarDal
+    public class InMemoryCarDal: ICarDal
     {
         List<Car> _cars;
         public InMemoryCarDal()
         {
             _cars = new List<Car>
             {
-                new Car{CarId=1,BrandId=1,ColorId=1,ModelYear=1990,DailyPrice=500,Description="Hızlı ve Öfkeli"},
-                new Car{CarId=2,BrandId=1,ColorId=2,ModelYear=2020,DailyPrice=500,Description="Aile"},
-                new Car{CarId=3,BrandId=2,ColorId=2,ModelYear=2023,DailyPrice=500,Description="Spor"},
-                new Car{CarId=4,BrandId=3,ColorId=3,ModelYear=2028,DailyPrice=500,Description="Pikup"},
-                new Car{CarId=5,BrandId=3,ColorId=3,ModelYear=2020,DailyPrice=500,Description="Offroad"},
+                new Car{Id=1,BrandId=1,ColorId=1,ModelYear=1990,DailyPrice=500,Description="Hızlı ve Öfkeli"},
+                new Car{Id=2,BrandId=1,ColorId=2,ModelYear=2020,DailyPrice=500,Description="Aile"},
+                new Car{Id=3,BrandId=2,ColorId=2,ModelYear=2023,DailyPrice=500,Description="Spor"},
+                new Car{Id=4,BrandId=3,ColorId=3,ModelYear=2028,DailyPrice=500,Description="Pikup"},
+                new Car{Id=5,BrandId=3,ColorId=3,ModelYear=2020,DailyPrice=500,Description="Offroad"},
             };
         }
         public void Add(Car car)
@@ -30,7 +30,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-            Car carToDelete = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            Car carToDelete = _cars.SingleOrDefault(c => c.Id == car.Id);
             _cars.Remove(carToDelete);
         }
 
@@ -56,7 +56,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Update(Car car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            Car carToUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.ModelYear = car.ModelYear;
