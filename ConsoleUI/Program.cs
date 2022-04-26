@@ -7,7 +7,7 @@ using System;
 namespace ConsoleUI
 {
     class Program
-    {
+    {//WebAPI ye geçince kurtulmayı ümidettiğim sınıf, Consol App...................
         static void Main(string[] args)
         {
             //CarTest();

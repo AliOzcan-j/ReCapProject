@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Core.Utilities.Results.Abstract
 {
     public interface IDataResult<T>:IResult
-    {
+    {//IResult referansını tutar ve aynı zamanda data dönderebilir
         T Data { get; }
     }
 }

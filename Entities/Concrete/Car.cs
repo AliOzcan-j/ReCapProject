@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Core.Entities;
 
+
+/*Attributelara reqiured etiketi atanmayacak, bu doğrulama core katmanındaki 
+  interceptor sınıflarıyla yapılacak*/
 namespace Entities.Concrete
 {
     public class Car:IEntity

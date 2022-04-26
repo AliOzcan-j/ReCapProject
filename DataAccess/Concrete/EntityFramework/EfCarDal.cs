@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 using Core.DataAccess.EntityFramework;
 using Entities.DTOs;
 
+//Hem EntityRepository hem EfEntityRepositoryBase referanslarını tutabildiği için here iki sınıfında metodlarını kullanabilir
+
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, RentACarContext>, ICarDal
-    {
+    {//sınıfa özgün metodlar burada yazılır
         public List<CarDetailDto> GetCarDetails()
-        {
+        {//Brands ve Colors tablolarını join operasyonuyla Cars tablosuna view benzeri işlevi gerçekleştirmek için yazıldı
             using (RentACarContext context = new RentACarContext())
             {
                 var result = from c in context.Cars

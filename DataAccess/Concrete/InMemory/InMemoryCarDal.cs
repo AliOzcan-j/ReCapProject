@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Entities.DTOs;
-
+//Katmanların işlevlerini test etmek amacıyla yazıldı
 namespace DataAccess.Concrete.InMemory
 {
     public class InMemoryCarDal: ICarDal

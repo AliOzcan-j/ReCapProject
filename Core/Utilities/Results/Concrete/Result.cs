@@ -10,7 +10,7 @@ namespace Core.Utilities.Results.Concrete
     public class Result:IResult
     {
         public Result(bool success, string message):this(success)
-        {
+        {//Mesajı ve sonucu dönderir. Yalnızca sonuç isteniyorsa this(success) aşağıdaki metoda yönlendirir
             Message = message;
         }
 

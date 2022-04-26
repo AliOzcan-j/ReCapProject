@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Core.Utilities.Results.Concrete
 {
     public class ErrorDataResult<T>:DataResult<T>
-    {
+    {//API da ihtiyaç duyulabilecek tüm Result işlemleri Error ve Success sınıfları için ayrı yazıldı
         public ErrorDataResult(T data, string message) : base(data, false, message)
         {
         }

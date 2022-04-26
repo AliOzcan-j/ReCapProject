@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
 
+
+/*database view operasyonları yerine entity gibi tanımlanan varlıklarla farklı attributelar 
+ birleşik hale getirilebilir*/
 namespace Entities.DTOs
 {
     public class CarDetailDto:IDto

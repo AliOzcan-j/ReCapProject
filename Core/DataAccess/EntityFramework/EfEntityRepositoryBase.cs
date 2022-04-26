@@ -7,15 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+//Entity Framework'e özgün işlemleri yapan metodları barındıran sınıf, DataAccess->Concrete->EfclassDal sınıfları inherit edecek
+
 namespace Core.DataAccess.EntityFramework
 {
     public class EfEntityRepositoryBase<TEntity, TContext>
-        where TEntity : class, IEntity, new()
-        where TContext: DbContext, new()
+        where TEntity : class, IEntity, new()//where -> TEntity bir class, IEntity ve newlenebilir
+        where TContext: DbContext, new()//where -> TContext bir DbContext ve newlenebilir
     {
         public void Add(TEntity entity)
         {
-            using (TContext context = new TContext())
+            using (TContext context = new TContext())//using -> context işi bittikten sonra süpürülür
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
