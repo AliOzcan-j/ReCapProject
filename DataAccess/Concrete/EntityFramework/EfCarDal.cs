@@ -16,7 +16,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, RentACarContext>, ICarDal
     {//sınıfa özgün metodlar burada yazılır
-        public List<CarDetailDto> GetCarDetails()
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
         {//Brands ve Colors tablolarını join operasyonuyla Cars tablosuna view benzeri işlevi gerçekleştirmek için yazıldı
             using (RentACarContext context = new RentACarContext())
             {
@@ -25,11 +25,16 @@ namespace DataAccess.Concrete.EntityFramework
                     join co in context.Colors on c.ColorId equals co.Id
                     select new CarDetailDto()
                     {
-                        Id = c.Id, BrandName = b.Name,
-                        ColorName = co.Name, Description = c.Description,
-                        ModelYear = c.ModelYear, DailyPrice = c.DailyPrice
+                        Id = c.Id, 
+                        BrandName = b.Name,
+                        ColorName = co.Name, 
+                        Description = c.Description,
+                        ModelYear = c.ModelYear, 
+                        DailyPrice = c.DailyPrice
                     };
-                return result.ToList();
+                return filter == null
+                    ? result.ToList()
+                    : result.Where(filter).ToList();
             }
         }
     }

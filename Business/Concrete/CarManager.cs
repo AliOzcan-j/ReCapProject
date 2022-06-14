@@ -37,6 +37,12 @@ namespace Business.Concrete
             }
         }
 
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new SuccessResult();
+        }
+
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
@@ -71,15 +77,29 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == id));
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetailsAll()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
-        public IResult Update(Car car)
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByCarId(int id)
         {
-            _carDal.Update(car);
-            return new SuccessResult();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.Id == id));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandName(string brandName)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.BrandName == brandName));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByColorName(string colorName)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.ColorName == colorName));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByFilter(int carId, string brandName, string colorName)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c => c.Id == carId && c.BrandName == brandName && c.ColorName == colorName));
         }
     }
 }

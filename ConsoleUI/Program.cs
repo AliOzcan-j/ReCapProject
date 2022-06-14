@@ -17,8 +17,13 @@ namespace ConsoleUI
             var result = cm.GetCarsByBrandId(15);
             Console.WriteLine(result.Message);*/
             //UserTest();
+            //RentalTest();
+        }
+
+        private static void RentalTest()
+        {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            var result = rentalManager.Add(new Rental { Id=3,CarId=2,CustomerId=3,RentDate=new DateTime(2020,02,22)});
+            var result = rentalManager.Add(new Rental { Id = 3, CarId = 2, CustomerId = 3, RentDate = new DateTime(2020, 02, 22) });
             Console.WriteLine(result.Message);
         }
 
@@ -56,7 +61,7 @@ namespace ConsoleUI
         {
             Console.WriteLine("\n");
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails().Data)
+            foreach (var car in carManager.GetCarDetailsAll().Data)
             {
                 Console.WriteLine(car.Id + " " + car.BrandName + " " + car.Description+" "+
                                   car.ColorName + " " + car.ModelYear + " " + car.DailyPrice);

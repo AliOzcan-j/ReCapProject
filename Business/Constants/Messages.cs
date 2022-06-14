@@ -13,5 +13,6 @@ namespace Business.Constants
         public static string CarRemoved = "Araba kaydı silindi";
         public static string InvalidCarNameInput = "Araba ismi en az 2 karakterden oluşmalı";
         public static string InvalidBrandId = "Brand id bulunamadı";
+        public static string CarDontHaveAnyImages = "Kayıtlı fotoğraf bulunamadı";
     }
 }
