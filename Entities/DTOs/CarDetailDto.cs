@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Entities;
+using Core.Entities.Abstract;
 
 
 /*database view operasyonları yerine entity gibi tanımlanan varlıklarla farklı attributelar 

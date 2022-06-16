@@ -11,6 +11,7 @@ using Core.Utilities.Results.Concrete;
 using Entities.DTOs;
 using Core.Aspects.Autofac.Validation;
 using Business.ValidationRules.FluentValidation;
+using Business.BusinessAspect.Autofac;
 
 namespace Business.Concrete
 {
@@ -49,6 +50,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarRemoved);
         }
 
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IDataResult<List<Car>> GetAll()
         {

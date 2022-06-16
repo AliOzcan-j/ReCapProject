@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Core.Entities;
+using Core.Entities.Abstract;
 
 
 /*Attributelara reqiured etiketi atanmayacak, bu doğrulama core katmanındaki 
